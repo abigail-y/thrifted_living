@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Thrifted Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background-color: var(--color-warm-white);
+      padding: 2rem;
+      border-radius: 5px;
+      box-shadow: var(--shadow-soft);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-brown-dark);
+      border-bottom: 2px solid var(--color-rust);
+      padding-bottom: 0.5rem;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2rem;
+    }
+
+    .category-list {
+      list-style: none;
+    }
+
+    .category-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    .category-list a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: var(--color-brown);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .category-list a:hover,
+    .category-list a.active {
+      background-color: var(--color-cream);
+      color: var(--color-rust);
+    }
+
+    /* Filter Styles */
+    .filter-group {
+      margin-bottom: 1rem;
+    }
+
+    .filter-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--color-brown-dark);
+      font-size: 0.9rem;
+    }
+
+    .filter-group select,
+    .filter-group input[type="range"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      font-family: var(--font-body);
+      background-color: white;
+    }
+
+    .filter-group select:focus {
+      outline: none;
+      border-color: var(--color-rust);
+    }
+
+    .price-range {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--color-brown);
+      margin-top: 0.5rem;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 6px;
+      background: var(--color-cream);
+      border-radius: 3px;
+      border: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--color-rust);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      accent-color: var(--color-rust);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Products Grid */
+    .menu-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .menu-product-card {
+      background-color: var(--color-warm-white);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+    }
+
+    .menu-product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .menu-product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-product-info {
+      padding: 1.25rem;
+    }
+
+    .menu-product-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-brown-dark);
+    }
+
+    .menu-product-info .price {
+      font-size: 1.2rem;
+      color: var(--color-rust);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .btn-details {
+      display: inline-block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: var(--color-brown-dark);
+      color: var(--color-warm-white);
+      text-align: center;
+      border-radius: 3px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .btn-details:hover {
+      background-color: var(--color-rust);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .shop-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Thrifted <span>Living</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Our Products</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Layout -->
+  <div class="shop-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Categories -->
+      <div class="sidebar-section">
+        <h3>Categories</h3>
+        <ul class="category-list">
+          <li><a href="#" class="active">All Furniture</a></li>
+          <li><a href="#">Chairs</a></li>
+          <li><a href="#">Tables</a></li>
+          <li><a href="#">Storage</a></li>
+          <li><a href="#">Couches</a></li>
+        </ul>
+      </div>
+
+      <!-- Price Filter -->
+      <div class="sidebar-section">
+        <h3>Filters</h3>
+        <div class="filter-group">
+          <label>Price Range</label>
+          <input type="range" min="0" max="2000" value="1000" id="priceRange">
+          <div class="price-range">
+            <span>$0</span>
+            <span id="priceValue">$1,000</span>
+            <span>$2,000</span>
+          </div>
+        </div>
+
+        <!-- Room Styling -->
+        <div class="filter-group">
+          <label>Room Styling</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Living Room</label>
+            <label><input type="checkbox" checked> Bedroom</label>
+          </div>
+        </div>
+
+        <!-- Condition -->
+        <div class="filter-group">
+          <label>Condition</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" checked> Fully Restored</label>
+            <label><input type="checkbox" checked> Lightly Restored</label>
+            <label><input type="checkbox" checked> Original Patina</label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <main>
+      <div class="menu-products-grid">
+        <!-- Product 1 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600" alt="Mid-Century Sofa">
+          <div class="menu-product-info">
+            <h3>Mid-Century Modern Sofa</h3>
+            <p class="price">$895</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600" alt="Vintage Armchair">
+          <div class="menu-product-info">
+            <h3>Victorian Velvet Armchair</h3>
+            <p class="price">$425</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=600" alt="Rustic Dining Table">
+          <div class="menu-product-info">
+            <h3>Rustic Oak Dining Table</h3>
+            <p class="price">$1,250</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600" alt="Art Deco Dresser">
+          <div class="menu-product-info">
+            <h3>Art Deco Walnut Dresser</h3>
+            <p class="price">$675</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600" alt="Industrial Bookshelf">
+          <div class="menu-product-info">
+            <h3>Industrial Iron Bookshelf</h3>
+            <p class="price">$550</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?w=600" alt="Danish Side Table">
+          <div class="menu-product-info">
+            <h3>Danish Teak Side Table</h3>
+            <p class="price">$295</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=600" alt="Leather Club Chair">
+          <div class="menu-product-info">
+            <h3>Distressed Leather Chair</h3>
+            <p class="price">$750</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="menu-product-card">
+          <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600" alt="Rattan Peacock Chair">
+          <div class="menu-product-info">
+            <h3>Bohemian Rattan Chair</h3>
+            <p class="price">$380</p>
+            <a href="#" class="btn-details">View Details</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Thrifted Living</h4>
+        <p>Curating vintage and refurbished furniture for homes that value character and sustainability.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Our Products</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <p><a href="#">Instagram</a> | <a href="#">Pinterest</a> | <a href="#">Facebook</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thrifted Living. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    // Price range slider
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    priceRange.addEventListener('input', function() {
+      priceValue.textContent = '$' + parseInt(this.value).toLocaleString();
+    });
+  </script>
+</body>
+</html>

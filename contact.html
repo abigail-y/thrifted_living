@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Thrifted Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Contact Layout */
+    .contact-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    /* Shop Info */
+    .shop-info h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background-color: var(--color-warm-white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-text h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--color-brown-dark);
+    }
+
+    .info-text p {
+      font-size: 0.95rem;
+      color: var(--color-brown);
+      line-height: 1.5;
+    }
+
+    /* Social Media */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background-color: var(--color-brown-dark);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--color-rust);
+      transform: translateY(-3px);
+    }
+
+    /* Contact Form */
+    .contact-form-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form-card {
+      background-color: var(--color-warm-white);
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-form-card .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-form-card label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--color-brown-dark);
+    }
+
+    .contact-form-card input,
+    .contact-form-card textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .contact-form-card input:focus,
+    .contact-form-card textarea:focus {
+      outline: none;
+      border-color: var(--color-rust);
+    }
+
+    .contact-form-card textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--color-rust);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--color-brown-dark);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background-color: var(--color-warm-white);
+      padding: 5rem 2rem;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-brown-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .faq-question:hover {
+      color: var(--color-rust);
+    }
+
+    .faq-question .icon {
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .faq-question.active .icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer.active {
+      max-height: 200px;
+    }
+
+    .faq-answer p {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--color-brown);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Thrifted <span>Living</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Our Products</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <div class="contact-page">
+    <div class="contact-grid">
+      <!-- Shop Info -->
+      <div class="shop-info">
+        <h2>Visit Our Shop</h2>
+        <div class="info-card">
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div class="info-text">
+              <h4>Address</h4>
+              <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <div class="info-text">
+              <h4>Email</h4>
+              <p>hello@thriftedliving.com</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div class="info-text">
+              <h4>Phone</h4>
+              <p>(718) 555-0123</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🕐</span>
+            <div class="info-text">
+              <h4>Hours</h4>
+              <p>Monday - Saturday: 10am - 6pm<br>Sunday: 12pm - 5pm</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <h4 style="margin-bottom: 0.5rem; color: var(--color-brown-dark);">Follow Us</h4>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram">📷</a>
+          <a href="#" class="social-link" title="Pinterest">📌</a>
+          <a href="#" class="social-link" title="Facebook">👥</a>
+          <a href="#" class="social-link" title="TikTok">🎵</a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <h2>Send a Message</h2>
+        <div class="contact-form-card">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="How can we help?">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your project or question..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you offer delivery?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We offer white-glove delivery throughout the NYC metro area. Delivery fees vary by distance and item size. We also ship select smaller pieces nationwide.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I request a custom restoration?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. Bring us your furniture or let us source a piece for you. We'll work with you on fabric choices, finishes, and any custom modifications you'd like.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What's your return policy?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We offer a 7-day return window for items in original condition. Custom orders and restored pieces brought in by customers are final sale.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you buy vintage furniture?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We do! Send us photos of your pieces to hello@thriftedliving.com. We're always looking for quality vintage furniture with good bones and character.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Thrifted Living</h4>
+        <p>Curating vintage and refurbished furniture for homes that value character and sustainability.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Our Products</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <p><a href="#">Instagram</a> | <a href="#">Pinterest</a> | <a href="#">Facebook</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thrifted Living. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    function toggleFaq(button) {
+      const answer = button.nextElementSibling;
+      const isActive = button.classList.contains('active');
+
+      // Close all FAQs
+      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+
+      // Open clicked one if it wasn't active
+      if (!isActive) {
+        button.classList.add('active');
+        answer.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

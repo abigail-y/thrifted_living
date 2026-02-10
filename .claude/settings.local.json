@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uvx:*)",
+      "Bash(pip install:*)",
+      "Bash(powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\")",
+      "Bash(C:\\\\Users\\\\abiga\\\\.local\\\\bin\\\\uv python install:*)",
+      "Bash(powershell -c \"& ''$env:USERPROFILE\\\\.local\\\\bin\\\\uv'' python install\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "nanobanana"
+  ]
+}

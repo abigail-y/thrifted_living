@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Thrifted Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Before & After Section */
+    .before-after-section {
+      background-color: var(--color-warm-white);
+      padding: 5rem 2rem;
+    }
+
+    .before-after-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .before-after-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .before-after-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .before-after-label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 3px;
+    }
+
+    .label-before {
+      background-color: var(--color-brown);
+      color: white;
+    }
+
+    .label-after {
+      background-color: var(--color-rust);
+      color: white;
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: 5rem 2rem;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background-color: var(--color-warm-white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background-color: var(--color-rust);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      font-family: var(--font-heading);
+    }
+
+    .process-step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .process-step p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Story Section */
+    .story-section {
+      padding: 5rem 2rem;
+      background-color: var(--color-cream);
+    }
+
+    .story-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-content h2 {
+      margin-bottom: 2rem;
+    }
+
+    .story-content p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-signature {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-brown-dark);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .before-after-container {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Thrifted <span>Living</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Our Products</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>About Thrifted Living</h1>
+    <p>Where forgotten furniture finds new purpose.</p>
+  </section>
+
+  <!-- Company Story -->
+  <section class="story-section">
+    <div class="story-content">
+      <h2>Our Story</h2>
+      <p>Thrifted Living started in 2018 in a cramped Brooklyn garage with one simple mission: save beautiful furniture from ending up in landfills. What began as a weekend hobby—rescuing worn chairs and tired tables from estate sales—quickly became a passion.</p>
+      <p>We saw potential where others saw junk. A water-stained dresser became a statement piece. A wobbly mid-century chair was reborn with new upholstery and reinforced joints. Each piece we touched had decades of stories woven into its wood grain, and we wanted to help those stories continue.</p>
+      <p>Today, our small team of artisans, upholsterers, and furniture lovers has restored over 2,000 pieces. We've grown from that garage into a sunny Brooklyn showroom, but our mission remains the same: give every piece the second chance it deserves.</p>
+      <p class="founder-signature">— Emma & James, Founders</p>
+    </div>
+  </section>
+
+  <!-- Before & After -->
+  <section class="before-after-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>The Transformation</h2>
+        <p>See what's possible when craftsmanship meets character.</p>
+      </div>
+      <div class="before-after-container">
+        <div class="before-after-card">
+          <span class="before-after-label label-before">Before</span>
+          <img src="images/before-couch.jpg" alt="Worn vintage sofa before restoration">
+        </div>
+        <div class="before-after-card">
+          <span class="before-after-label label-after">After</span>
+          <img src="images/after-couch.jpg" alt="Restored vintage sofa">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Refurbishing Process -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Refurbishing Process</h2>
+        <p>Every piece goes through a careful, hands-on restoration journey.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Discovery</h3>
+          <p>We source pieces from estate sales, auctions, and private sellers—always looking for quality bones and hidden potential.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Assessment</h3>
+          <p>Each piece is carefully inspected. We document its condition, identify repairs needed, and plan the restoration approach.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Restoration</h3>
+          <p>Our artisans get to work—repairing joints, refinishing surfaces, replacing springs, and reupholstering with quality fabrics.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Final Touch</h3>
+          <p>Every piece is cleaned, polished, and inspected before heading to the showroom floor, ready for its next home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section style="background-color: var(--color-warm-white); padding: 5rem 2rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Drives Us</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="icon">♻️</div>
+          <h3>Sustainability</h3>
+          <p>Every restored piece means one less in a landfill and reduced demand for new manufacturing.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">🛠️</div>
+          <h3>Craftsmanship</h3>
+          <p>We use time-honored techniques and quality materials to ensure each piece lasts another lifetime.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">💛</div>
+          <h3>Character</h3>
+          <p>Vintage pieces carry warmth and history that mass-produced furniture simply cannot replicate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Thrifted Living</h4>
+        <p>Curating vintage and refurbished furniture for homes that value character and sustainability.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Our Products</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <p><a href="#">Instagram</a> | <a href="#">Pinterest</a> | <a href="#">Facebook</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thrifted Living. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

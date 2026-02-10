@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mid-Century Modern Sofa | Thrifted Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-detail {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--color-brown);
+    }
+
+    .breadcrumb a {
+      color: var(--color-brown-light);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-rust);
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Product Image */
+    .product-image-container {
+      position: sticky;
+      top: 100px;
+    }
+
+    .product-image-main {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-thumbnails {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .product-thumbnails img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .product-thumbnails img:hover,
+    .product-thumbnails img.active {
+      opacity: 1;
+      border-color: var(--color-rust);
+    }
+
+    /* Product Info */
+    .product-info-detail {
+      padding: 1rem 0;
+    }
+
+    .product-category {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-olive);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-title {
+      font-size: 2.5rem;
+      color: var(--color-brown-dark);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .product-price-condition {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e0d8cf;
+    }
+
+    .product-price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-rust);
+    }
+
+    .product-condition {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--color-olive);
+      color: white;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 3px;
+    }
+
+    .product-description {
+      margin-bottom: 2rem;
+    }
+
+    .product-description h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-brown-dark);
+    }
+
+    .product-description p {
+      line-height: 1.8;
+      color: var(--color-brown);
+    }
+
+    /* What We Fixed */
+    .what-we-fixed {
+      background-color: var(--color-warm-white);
+      padding: 1.5rem;
+      border-radius: 5px;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--color-rust);
+    }
+
+    .what-we-fixed h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-brown-dark);
+    }
+
+    .what-we-fixed ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .what-we-fixed li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--color-brown);
+    }
+
+    .what-we-fixed li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-olive);
+      font-weight: bold;
+    }
+
+    /* Dimensions */
+    .product-dimensions {
+      margin-bottom: 2rem;
+    }
+
+    .product-dimensions h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-brown-dark);
+    }
+
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .dimension-item {
+      background-color: var(--color-cream);
+      padding: 1rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .dimension-item span {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-brown-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .dimension-item strong {
+      font-size: 1.2rem;
+      color: var(--color-brown-dark);
+    }
+
+    /* Add to Cart */
+    .add-to-cart-section {
+      padding-top: 2rem;
+      border-top: 1px solid #e0d8cf;
+    }
+
+    .btn-add-cart {
+      display: block;
+      width: 100%;
+      padding: 1.25rem 2rem;
+      background-color: var(--color-rust);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn-add-cart:hover {
+      background-color: var(--color-brown-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      color: var(--color-brown);
+      font-size: 0.95rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-rust);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .product-image-container {
+        position: static;
+      }
+
+      .product-title {
+        font-size: 2rem;
+      }
+
+      .dimensions-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-price-condition {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Thrifted <span>Living</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Our Products</a></li>
+        <li><a href="products.html" class="active">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Detail -->
+  <main class="product-detail">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="menu.html">Shop</a> / <span>Mid-Century Modern Sofa</span>
+    </div>
+
+    <div class="product-layout">
+      <!-- Product Image -->
+      <div class="product-image-container">
+        <img src="images/coffee-table-product.jpg" alt="Vintage Coffee Table" class="product-image-main">
+        <div class="product-thumbnails">
+          <img src="images/coffee-table-product.jpg" alt="Coffee table product view" class="active">
+          <img src="images/coffee-table-room.jpg" alt="Coffee table in room setting">
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info-detail">
+        <p class="product-category">Couches</p>
+        <h1 class="product-title">Mid-Century Modern Sofa</h1>
+
+        <div class="product-price-condition">
+          <span class="product-price">$895</span>
+          <span class="product-condition">Fully Restored</span>
+        </div>
+
+        <!-- Description -->
+        <div class="product-description">
+          <h3>About This Piece</h3>
+          <p>This stunning mid-century modern sofa dates back to the early 1960s and features the clean lines and tapered wooden legs that defined the era. Originally sourced from an estate sale in upstate New York, this piece has been lovingly restored to bring out its timeless beauty while ensuring comfort for years to come.</p>
+        </div>
+
+        <!-- What We Fixed -->
+        <div class="what-we-fixed">
+          <h3>What We Restored</h3>
+          <ul>
+            <li>Completely reupholstered in premium olive velvet fabric</li>
+            <li>Replaced worn seat cushion foam with high-density foam</li>
+            <li>Refinished and reinforced original walnut legs</li>
+            <li>Repaired and re-tied spring suspension system</li>
+            <li>Deep cleaned and treated wooden frame</li>
+          </ul>
+        </div>
+
+        <!-- Dimensions -->
+        <div class="product-dimensions">
+          <h3>Dimensions</h3>
+          <div class="dimensions-grid">
+            <div class="dimension-item">
+              <span>Width</span>
+              <strong>84"</strong>
+            </div>
+            <div class="dimension-item">
+              <span>Depth</span>
+              <strong>34"</strong>
+            </div>
+            <div class="dimension-item">
+              <span>Height</span>
+              <strong>32"</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add to Cart -->
+        <div class="add-to-cart-section">
+          <button class="btn-add-cart">Add to Cart</button>
+          <a href="menu.html" class="back-link">← Back to Shop</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Thrifted Living</h4>
+        <p>Curating vintage and refurbished furniture for homes that value character and sustainability.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Our Products</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <p><a href="#">Instagram</a> | <a href="#">Pinterest</a> | <a href="#">Facebook</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thrifted Living. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    // Thumbnail click handler
+    document.querySelectorAll('.product-thumbnails img').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        document.querySelector('.product-image-main').src = this.src;
+        document.querySelectorAll('.product-thumbnails img').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thrifted Living | Vintage & Refurbished Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Thrifted <span>Living</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Our Products</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Thrifted Living</h1>
+      <p class="slogan">Loved furniture restored to be yours</p>
+    </div>
+  </section>
+
+  <!-- Product Cards -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Collection</h2>
+        <p>Handpicked vintage treasures, each with a story waiting to continue in your home.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600" alt="Mid-Century Sofa">
+          <div class="product-info">
+            <p class="category">Seating</p>
+            <h3>Mid-Century Modern Sofa</h3>
+            <p class="price">$895</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600" alt="Vintage Armchair">
+          <div class="product-info">
+            <p class="category">Seating</p>
+            <h3>Victorian Velvet Armchair</h3>
+            <p class="price">$425</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=600" alt="Rustic Dining Table">
+          <div class="product-info">
+            <p class="category">Tables</p>
+            <h3>Rustic Oak Dining Table</h3>
+            <p class="price">$1,250</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600" alt="Vintage Dresser">
+          <div class="product-info">
+            <p class="category">Storage</p>
+            <h3>Art Deco Walnut Dresser</h3>
+            <p class="price">$675</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600" alt="Antique Bookshelf">
+          <div class="product-info">
+            <p class="category">Storage</p>
+            <h3>Industrial Iron Bookshelf</h3>
+            <p class="price">$550</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?w=600" alt="Vintage Side Table">
+          <div class="product-info">
+            <p class="category">Tables</p>
+            <h3>Danish Teak Side Table</h3>
+            <p class="price">$295</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Button Section -->
+  <section style="text-align: center; padding: 4rem 2rem;">
+    <a href="products.html" class="btn btn-primary">Shop Furniture</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Thrifted Living</h4>
+        <p>Curating vintage and refurbished furniture for homes that value character, sustainability, and timeless design.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Our Products</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>123 Vintage Lane<br>Brooklyn, NY 11201</p>
+        <p style="margin-top: 1rem;">Mon-Sat: 10am - 6pm<br>Sun: 12pm - 5pm</p>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <p>Follow us for new arrivals and restoration stories.</p>
+        <p style="margin-top: 1rem;">
+          <a href="#">Instagram</a> | <a href="#">Pinterest</a> | <a href="#">Facebook</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Thrifted Living. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
