@@ -1,14 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('theme-switch');
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-  const saved = localStorage.getItem('theme');
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = saved === 'dark' || (!saved && systemDark);
-
-  if (isDark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    toggle.checked = true;
-  }
+  toggle.checked = isDark;
 
   toggle.addEventListener('change', () => {
     const theme = toggle.checked ? 'dark' : 'light';

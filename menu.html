@@ -8,8 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="java/theme.js"></script>
-
+  <script>
+  const saved = localStorage.getItem('theme');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = saved === 'dark' || (!saved && systemDark);
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+</script>
+<script src="java/theme.js"></script>
   <style>
     .shop-layout {
       display: grid;
