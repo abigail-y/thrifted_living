@@ -7,7 +7,8 @@
       "Bash(C:\\\\Users\\\\abiga\\\\.local\\\\bin\\\\uv python install:*)",
       "Bash(powershell -c \"& ''$env:USERPROFILE\\\\.local\\\\bin\\\\uv'' python install\")",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(where:*)"
     ]
   },
   "enabledMcpjsonServers": [

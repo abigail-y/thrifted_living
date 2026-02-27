@@ -1,4 +1,3 @@
-/* ===== CSS Variables & Reset ===== */
 :root {
   --color-cream: #F5F0E8;
   --color-warm-white: #FDFBF7;
@@ -14,7 +13,89 @@
   --shadow-hover: 0 8px 25px rgba(92, 64, 51, 0.15);
   --transition: all 0.3s ease;
 }
+/* ===== CSS Variables & Reset ===== */
+[data-theme="dark"] {
+  /* Core Backgrounds */
+  --color-cream: #1A1816;
+  --color-warm-white: #24211E;
 
+  /* Text & Neutrals */
+  --color-brown: #D8C2A8;
+  --color-brown-light: #BFA98F;
+  --color-brown-dark: #E8DCCF;
+
+  /* Accents */
+  --color-olive: #A8B86A;
+  --color-rust: #D97A63;
+  --color-gold: #D8C27A;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-cream: #1A1816;
+    --color-warm-white: #24211E;
+    --color-brown: #D8C2A8;
+    --color-brown-light: #BFA98F;
+    --color-brown-dark: #E8DCCF;
+    --color-olive: #A8B86A;
+    --color-rust: #D97A63;
+    --color-gold: #D8C27A;
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.35);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.45);
+  }
+}
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-brown-light);
+  border-radius: 28px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--color-warm-white);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+input:checked + .slider {
+  background-color: var(--color-gold);
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
 * {
   margin: 0;
   padding: 0;
